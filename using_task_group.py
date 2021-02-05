@@ -1,11 +1,13 @@
 from airflow.operators.bash import BashOperator
 from airflow.models import DAG
 from airflow.utils.task_group import TaskGroup
+from datetime import datetime
 
 with DAG(
    "using_task_group",
    default_args={'owner': 'airflow'},
-   start_date=days_ago(2),
+   start_date=datetime(2017, 3, 20),
+   catchup=False, tags=["example"],
    schedule_interval=None,
 ) as dag:
    start_task = BashOperator(
