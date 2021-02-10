@@ -5,7 +5,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
-import common_functions as cf
+from . import common_functions as cf
 #import abc_util as abc
 import os
 
