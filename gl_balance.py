@@ -7,6 +7,7 @@ from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+sys.path.append(os.getcwd())
 import common_functions as cf
 #import abc_util as abc
 
