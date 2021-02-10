@@ -8,6 +8,7 @@ from airflow.utils.task_group import TaskGroup
 #import abc_util as abc
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+sys.path.append(os.getcwd())
 import common_functions as cf
 
 # dag = DAG('GL_BALANCE', description='GL_BALANCE DEMO DAG',
