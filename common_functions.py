@@ -10,7 +10,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
-
+#
 def get_creds(app_name):
 
     #with open('/root/airflow/creds.json') as f:    
