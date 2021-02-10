@@ -5,9 +5,10 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.models import Variable
 from airflow.utils.task_group import TaskGroup
-from . import common_functions as cf
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
+import common_functions as cf
 #import abc_util as abc
-import os
 
 # dag = DAG('GL_BALANCE', description='GL_BALANCE DEMO DAG',
 #           schedule_interval=None,
