@@ -1,8 +1,8 @@
 import os
 import json
-import cx_Oracle
+##import cx_Oracle
 import json
-from pypsexec.client import Client
+##from pypsexec.client import Client
 from datetime import datetime
 import calendar
 from airflow import DAG
