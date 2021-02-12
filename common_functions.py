@@ -13,9 +13,10 @@ from airflow.utils.task_group import TaskGroup
 #
 def get_creds(app_name):
 
-    #with open('/root/airflow/creds.json') as f:    
-        #data = json.load(f)
-    data = Variable.get('creds_json', deserialize_json=True, default_var=None)
+    # with open('/root/airflow/creds.json') as f:    
+        # data = json.load(f)
+    # data = Variable.get('creds_json', deserialize_json=True, default_var=None)
+    data = json.loads(Variable.get('creds_json'))
     print('data-->', data)
     return data[app_name]
 
