@@ -15,8 +15,8 @@ def get_creds(app_name):
 
     #with open('/root/airflow/creds.json') as f:    
         #data = json.load(f)
-    data = Variable.get('creds_json', default_var=None)
-    return data.get(app_name)
+    data = Variable.get('creds_json', deserialize_json=True, default_var=None)
+    return data[app_name]
 
 
 def execute_commands(vault_path_or_creds, program_name, arguments):
