@@ -47,7 +47,8 @@ def execute_commands(vault_path_or_creds, program_name, arguments):
 def check_conn(database):
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'],service_name=creds['service_name'])
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         ver = conn.version
     return ver
 
@@ -59,7 +60,8 @@ def read_data(database, query, num_rows=None):
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
 
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             cursor.execute(query)
             if num_rows:
@@ -77,7 +79,8 @@ def run_query(database, query):
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
 
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             cursor.execute(query)
 
@@ -91,7 +94,8 @@ def insert_data(database, table_name, data):
 
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             cursor.executemany(insert_query, data, batcherrors=True)
             if cursor.getbatcherrors():
@@ -113,7 +117,8 @@ def delete_data(database, table_name=None, query=None):
 
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             cursor.execute(delete_query)
             conn.commit()
@@ -129,7 +134,8 @@ def truncate_data(database, table_name=None, query=None):
 
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             cursor.execute(truncate_query)
             conn.commit()
@@ -139,7 +145,8 @@ def call_stored_proc(proc_name, database):
 
     creds = get_creds(database)
     dsn_tns = cx_Oracle.makedsn(creds['host'], creds['port'], service_name=creds['service_name'])
-    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    # with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns) as conn:
+    with cx_Oracle.connect(user=creds['user'], password=creds['password'], dsn=dsn_tns, encoding="UTF-8") as conn:
         with conn.cursor() as cursor:
             a = cursor.callproc(proc_name)
             print(a)
